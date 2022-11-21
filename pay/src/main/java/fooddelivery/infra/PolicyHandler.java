@@ -19,7 +19,7 @@ import fooddelivery.domain.*;
 @Transactional
 public class PolicyHandler{
     @Autowired 결제이력Repository 결제이력Repository;
-    @Autowired 결제이력Repository 결제이력Repository;
+    @Autowired PaymentRepository paymentRepository;
     
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString){}
@@ -40,16 +40,16 @@ public class PolicyHandler{
     }
 
     @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='OrderCanceled'")
-    public void wheneverOrderCanceled_결재취소함(@Payload OrderCanceled orderCanceled){
+    public void wheneverOrderCanceled_CancelPay(@Payload OrderCanceled orderCanceled){
 
         OrderCanceled event = orderCanceled;
-        System.out.println("\n\n##### listener 결재취소함 : " + orderCanceled + "\n\n");
+        System.out.println("\n\n##### listener CancelPay : " + orderCanceled + "\n\n");
 
 
         
 
         // Sample Logic //
-        결제이력.결재취소함(event);
+        Payment.cancelPay(event);
         
 
         

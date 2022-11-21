@@ -20,18 +20,18 @@ import OrderStateView from "./components/OrderStateView"
 import OrderStateViewDetail from "./components/OrderStateViewDetail"
 import 결제이력Manager from "./components/listers/결제이력Cards"
 import 결제이력Detail from "./components/listers/결제이력Detail"
-import 결제이력Manager from "./components/listers/결제이력Cards"
-import 결제이력Detail from "./components/listers/결제이력Detail"
+import PaymentManager from "./components/listers/PaymentCards"
+import PaymentDetail from "./components/listers/PaymentDetail"
 
 import 주문관리Manager from "./components/listers/주문관리Cards"
 import 주문관리Detail from "./components/listers/주문관리Detail"
-import 주문관리Manager from "./components/listers/주문관리Cards"
-import 주문관리Detail from "./components/listers/주문관리Detail"
+import OrderManager from "./components/listers/OrderCards"
+import OrderDetail from "./components/listers/OrderDetail"
 
 import 주문상세보기View from "./components/주문상세보기View"
 import 주문상세보기ViewDetail from "./components/주문상세보기ViewDetail"
-import 주문상세보기View from "./components/주문상세보기View"
-import 주문상세보기ViewDetail from "./components/주문상세보기ViewDetail"
+import ViewOrderView from "./components/ViewOrderView"
+import ViewOrderViewDetail from "./components/ViewOrderViewDetail"
 
 
 export default new Router({
@@ -110,14 +110,14 @@ export default new Router({
                 component: 결제이력Detail
             },
             {
-                path: '/결제이력',
-                name: '결제이력Manager',
-                component: 결제이력Manager
+                path: '/payments',
+                name: 'PaymentManager',
+                component: PaymentManager
             },
             {
-                path: '/결제이력/:id',
-                name: '결제이력Detail',
-                component: 결제이력Detail
+                path: '/payments/:id',
+                name: 'PaymentDetail',
+                component: PaymentDetail
             },
 
             {
@@ -131,14 +131,14 @@ export default new Router({
                 component: 주문관리Detail
             },
             {
-                path: '/주문관리',
-                name: '주문관리Manager',
-                component: 주문관리Manager
+                path: '/orders',
+                name: 'OrderManager',
+                component: OrderManager
             },
             {
-                path: '/주문관리/:id',
-                name: '주문관리Detail',
-                component: 주문관리Detail
+                path: '/orders/:id',
+                name: 'OrderDetail',
+                component: OrderDetail
             },
 
             {
@@ -152,14 +152,14 @@ export default new Router({
                 component: 주문상세보기ViewDetail
             },
             {
-                path: '/주문상세보기',
-                name: '주문상세보기View',
-                component: 주문상세보기View
+                path: '/viewOrders',
+                name: 'ViewOrderView',
+                component: ViewOrderView
             },
             {
-                path: '/주문상세보기/:id',
-                name: '주문상세보기ViewDetail',
-                component: 주문상세보기ViewDetail
+                path: '/viewOrders/:id',
+                name: 'ViewOrderViewDetail',
+                component: ViewOrderViewDetail
             },
 
 

@@ -12,25 +12,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MenuViewHandler {
+public class ViewOrderViewHandler {
 
 
     @Autowired
-    private MenuRepository menuRepository;
+    private ViewOrderRepository viewOrderRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenOrdered_then_CREATE_1 (@Payload Ordered ordered) {
+    public void whenPayApprovaled_then_CREATE_1 (@Payload PayApprovaled payApprovaled) {
         try {
 
-            if (!ordered.validate()) return;
+            if (!payApprovaled.validate()) return;
 
             // view 객체 생성
-            Menu menu = new Menu();
+            ViewOrder viewOrder = new ViewOrder();
             // view 객체에 이벤트의 Value 를 set 함
-            menu.set(ordered.get());
-            menu.setItem(menu.getItem() - ordered.getItem());
+            viewOrder.set(payApprovaled.get());
             // view 레파지 토리에 save
-            menuRepository.save(menu);
+            viewOrderRepository.save(viewOrder);
 
         }catch (Exception e){
             e.printStackTrace();

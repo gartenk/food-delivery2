@@ -52,13 +52,13 @@ pluralCaseList.push( {plural: "통합주문상태", pascal: "통합주문상태"
 pluralCaseList.push( {plural: "menus", pascal: "Menu"} )
 pluralCaseList.push( {plural: "orderStates", pascal: "OrderState"} )
 pluralCaseList.push( {plural: "결제이력", pascal: "결제이력"} )
-pluralCaseList.push( {plural: "결제이력", pascal: "결제이력"} )
+pluralCaseList.push( {plural: "payments", pascal: "Payment"} )
 
 pluralCaseList.push( {plural: "주문관리", pascal: "주문관리"} )
-pluralCaseList.push( {plural: "주문관리", pascal: "주문관리"} )
+pluralCaseList.push( {plural: "orders", pascal: "Order"} )
 
 pluralCaseList.push( {plural: "주문상세보기", pascal: "주문상세보기"} )
-pluralCaseList.push( {plural: "주문상세보기", pascal: "주문상세보기"} )
+pluralCaseList.push( {plural: "viewOrders", pascal: "ViewOrder"} )
 
 
 Vue.prototype.$ManagerLists.forEach(function(item, idx) {

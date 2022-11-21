@@ -14,14 +14,18 @@
                             
                             
                             
+                            
+                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
                             [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ Item :  {{data.item }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ Qty :  {{data.qty }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ OrderId :  {{data.orderId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Price :  {{data.price }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ OrderState :  {{data.orderState }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Aprovaled :  {{data.aprovaled }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Canceled :  {{data.canceled }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Address :  {{data.address }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Receiver :  {{data.receiver }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -55,7 +59,7 @@
                         </v-fab-transition>
                     </template>
 
-                    <Order :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
+                    <Payment :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
                 
                     <v-btn
                             style="postition:absolute; top:2%; right:2%"
@@ -74,12 +78,12 @@
 
 <script>
     const axios = require('axios').default;
-    import Order from './../Order.vue';
+    import Payment from './../Payment.vue';
 
     export default {
-        name: 'OrderManager',
+        name: 'PaymentManager',
         components: {
-            Order,
+            Payment,
         },
         props: {
             offline: Boolean,
@@ -98,15 +102,17 @@
                 return;
             } 
 
-            var temp = await axios.get(axios.fixUrl('/orders'))
-            temp.data._embedded.orders.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
-            this.values = temp.data._embedded.orders;
+            var temp = await axios.get(axios.fixUrl('/payments'))
+            temp.data._embedded.payments.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
+            this.values = temp.data._embedded.payments;
             
             this.newValue = {
-                'item': '',
-                'qty': 0,
+                'orderId': '',
                 'price': 0,
-                'orderState': 0,
+                'aprovaled': false,
+                'canceled': false,
+                'address': '',
+                'receiver': '',
             }
         },
         methods: {

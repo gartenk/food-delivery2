@@ -37,6 +37,18 @@ public class Order  {
     
     
     private Integer qty;
+    
+    
+    
+    
+    
+    private Double price;
+    
+    
+    
+    
+    
+    private Integer orderState;
 
     @PostPersist
     public void onPostPersist(){
@@ -59,10 +71,10 @@ public class Order  {
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
 
-        fooddelivery.external.결제이력 결제이력 = new fooddelivery.external.결제이력();
+        fooddelivery.external.Payment payment = new fooddelivery.external.Payment();
         // mappings goes here
-        AppApplication.applicationContext.getBean(fooddelivery.external.결제이력Service.class)
-            .결제(결제이력);
+        AppApplication.applicationContext.getBean(fooddelivery.external.PaymentService.class)
+            .createPay(payment);
 
 
         Ordered ordered = new Ordered(this);
@@ -94,7 +106,7 @@ public class Order  {
 
 
 
-    public static void changeOrderState(배달시작됨 배달시작됨){
+    public static void changeOrderState(DeliveryStarted deliveryStarted){
 
         /** Example 1:  new item 
         Order order = new Order();
@@ -104,7 +116,28 @@ public class Order  {
 
         /** Example 2:  finding and process
         
-        repository().findById(배달시작됨.get???()).ifPresent(order->{
+        repository().findById(deliveryStarted.get???()).ifPresent(order->{
+            
+            order // do something
+            repository().save(order);
+
+
+         });
+        */
+
+        
+    }
+    public static void changeOrderState(DeliveryEnded deliveryEnded){
+
+        /** Example 1:  new item 
+        Order order = new Order();
+        repository().save(order);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(deliveryEnded.get???()).ifPresent(order->{
             
             order // do something
             repository().save(order);

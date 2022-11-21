@@ -39,11 +39,27 @@ public class PolicyHandler{
 
     }
 
-    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='배달시작됨'")
-    public void whenever배달시작됨_ChangeOrderState(@Payload 배달시작됨 배달시작됨){
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='DeliveryStarted'")
+    public void wheneverDeliveryStarted_ChangeOrderState(@Payload DeliveryStarted deliveryStarted){
 
-        배달시작됨 event = 배달시작됨;
-        System.out.println("\n\n##### listener ChangeOrderState : " + 배달시작됨 + "\n\n");
+        DeliveryStarted event = deliveryStarted;
+        System.out.println("\n\n##### listener ChangeOrderState : " + deliveryStarted + "\n\n");
+
+
+        
+
+        // Sample Logic //
+        Order.changeOrderState(event);
+        
+
+        
+
+    }
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='DeliveryEnded'")
+    public void wheneverDeliveryEnded_ChangeOrderState(@Payload DeliveryEnded deliveryEnded){
+
+        DeliveryEnded event = deliveryEnded;
+        System.out.println("\n\n##### listener ChangeOrderState : " + deliveryEnded + "\n\n");
 
 
         

@@ -80,10 +80,10 @@ public class PolicyHandler{
     }
 
     @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='OrderCanceled'")
-    public void wheneverOrderCanceled_카톡알림처리(@Payload OrderCanceled orderCanceled){
+    public void wheneverOrderCanceled_ProcessSnsMessage(@Payload OrderCanceled orderCanceled){
 
         OrderCanceled event = orderCanceled;
-        System.out.println("\n\n##### listener 카톡알림처리 : " + orderCanceled + "\n\n");
+        System.out.println("\n\n##### listener ProcessSnsMessage : " + orderCanceled + "\n\n");
 
 
         
@@ -94,10 +94,10 @@ public class PolicyHandler{
 
     }
     @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='Ordered'")
-    public void wheneverOrdered_카톡알림처리(@Payload Ordered ordered){
+    public void wheneverOrdered_ProcessSnsMessage(@Payload Ordered ordered){
 
         Ordered event = ordered;
-        System.out.println("\n\n##### listener 카톡알림처리 : " + ordered + "\n\n");
+        System.out.println("\n\n##### listener ProcessSnsMessage : " + ordered + "\n\n");
 
 
         
@@ -107,25 +107,11 @@ public class PolicyHandler{
         
 
     }
-    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='쿠폰발행됨'")
-    public void whenever쿠폰발행됨_카톡알림처리(@Payload 쿠폰발행됨 쿠폰발행됨){
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='DeliveryStarted'")
+    public void wheneverDeliveryStarted_ProcessSnsMessage(@Payload DeliveryStarted deliveryStarted){
 
-        쿠폰발행됨 event = 쿠폰발행됨;
-        System.out.println("\n\n##### listener 카톡알림처리 : " + 쿠폰발행됨 + "\n\n");
-
-
-        
-
-        // Sample Logic //
-
-        
-
-    }
-    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='배달시작됨'")
-    public void whenever배달시작됨_카톡알림처리(@Payload 배달시작됨 배달시작됨){
-
-        배달시작됨 event = 배달시작됨;
-        System.out.println("\n\n##### listener 카톡알림처리 : " + 배달시작됨 + "\n\n");
+        DeliveryStarted event = deliveryStarted;
+        System.out.println("\n\n##### listener ProcessSnsMessage : " + deliveryStarted + "\n\n");
 
 
         

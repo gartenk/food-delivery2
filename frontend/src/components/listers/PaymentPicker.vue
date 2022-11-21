@@ -15,16 +15,22 @@
                             <v-list-item-title>
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                Item :  {{item.item }}
-                            </v-list-item-subtitle>
-                            <v-list-item-subtitle>
-                                Qty :  {{item.qty }}
+                                OrderId :  {{item.orderId }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
                                 Price :  {{item.price }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                OrderState :  {{item.orderState }}
+                                Aprovaled :  {{item.aprovaled }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Canceled :  {{item.canceled }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Address :  {{item.address }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Receiver :  {{item.receiver }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 
@@ -43,7 +49,7 @@
     const axios = require('axios').default;
 
     export default {
-        name: 'OrderPicker',
+        name: 'PaymentPicker',
         props: {
             value: [String, Object, Array, Number, Boolean],
         },
@@ -53,14 +59,14 @@
         }),
         async created() {
             var me = this;
-            var temp = await axios.get(axios.fixUrl('/orders'))
+            var temp = await axios.get(axios.fixUrl('/payments'))
             if(temp.data) {
-                me.list = temp.data._embedded.orders;
+                me.list = temp.data._embedded.payments;
             }
 
             if(me.value && typeof me.value == "object" && Object.values(me.value)[0]) {
                 var id = Object.values(me.value)[0];
-                var tmpValue = await axios.get(axios.fixUrl('/orders/' + id))
+                var tmpValue = await axios.get(axios.fixUrl('/payments/' + id))
                 if(tmpValue.data) {
                     var val = tmpValue.data
                     me.list.forEach(function(item, idx) {
@@ -77,6 +83,10 @@
                 if(val != undefined) {
                     var arr = this.list[val]._links.self.href.split('/');
                     obj['id'] = arr[4]; 
+                    
+                    
+                    
+                    
                     
                     
                     

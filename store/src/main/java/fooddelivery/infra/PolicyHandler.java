@@ -19,7 +19,7 @@ import fooddelivery.domain.*;
 @Transactional
 public class PolicyHandler{
     @Autowired 주문관리Repository 주문관리Repository;
-    @Autowired 주문관리Repository 주문관리Repository;
+    @Autowired OrderRepository orderRepository;
     
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString){}
@@ -54,34 +54,34 @@ public class PolicyHandler{
 
     }
 
-    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='결제승인됨'")
-    public void whenever결제승인됨_주문정보받음(@Payload 결제승인됨 결제승인됨){
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='PayApprovaled'")
+    public void wheneverPayApprovaled_ReceiveOrder(@Payload PayApprovaled payApprovaled){
 
-        결제승인됨 event = 결제승인됨;
-        System.out.println("\n\n##### listener 주문정보받음 : " + 결제승인됨 + "\n\n");
+        PayApprovaled event = payApprovaled;
+        System.out.println("\n\n##### listener ReceiveOrder : " + payApprovaled + "\n\n");
 
 
         
 
         // Sample Logic //
-        주문관리.주문정보받음(event);
+        Order.receiveOrder(event);
         
 
         
 
     }
 
-    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='결제취소됨'")
-    public void whenever결제취소됨_주문취소처리(@Payload 결제취소됨 결제취소됨){
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='PayCanceled'")
+    public void wheneverPayCanceled_CancelOrder(@Payload PayCanceled payCanceled){
 
-        결제취소됨 event = 결제취소됨;
-        System.out.println("\n\n##### listener 주문취소처리 : " + 결제취소됨 + "\n\n");
+        PayCanceled event = payCanceled;
+        System.out.println("\n\n##### listener CancelOrder : " + payCanceled + "\n\n");
 
 
         
 
         // Sample Logic //
-        주문관리.주문취소처리(event);
+        Order.cancelOrder(event);
         
 
         

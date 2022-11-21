@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 style = "margin-left:4.5%; margin-top:-10px;">Order</h1>
+        <h1 style = "margin-left:4.5%; margin-top:-10px;">Payment</h1>
         <v-col style="margin-bottom:40px;">
             <div class="text-center">
                 <v-dialog
@@ -10,7 +10,7 @@
                         hide-overlay
                         transition="dialog-bottom-transition"
                 >
-                    <Order :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
+                    <Payment :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
                             @add="append" v-if="tick"/>
 
                     <v-btn
@@ -33,7 +33,7 @@
             </div>
         </v-col>
         <v-row>
-            <Order :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
+            <Payment :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
         </v-row>
     </div>
 </template>
@@ -41,12 +41,12 @@
 <script>
 
     const axios = require('axios').default;
-    import Order from './../Order.vue';
+    import Payment from './../Payment.vue';
 
     export default {
-        name: 'OrderManager',
+        name: 'PaymentManager',
         components: {
-            Order,
+            Payment,
         },
         props: {
             offline: Boolean
@@ -64,14 +64,16 @@
                 return;
             } 
 
-            var temp = await axios.get(axios.fixUrl('/orders'))
-            me.values = temp.data._embedded.orders;
+            var temp = await axios.get(axios.fixUrl('/payments'))
+            me.values = temp.data._embedded.payments;
             
             me.newValue = {
-                'item': '',
-                'qty': 0,
+                'orderId': '',
                 'price': 0,
-                'orderState': 0,
+                'aprovaled': false,
+                'canceled': false,
+                'address': '',
+                'receiver': '',
             }
         },
         methods:{

@@ -116,13 +116,13 @@
 
                     <v-list-item
                         class="px-2"
-                        key="결제이력"
-                        to="/결제이력"
+                        key="payments"
+                        to="/payments"
                         @click="changeUrl()"
                         color="deep-purple lighten-2"
                         style="font-weight:700;"
                     >
-                        결제이력
+                        Payment
                     </v-list-item>
 
 
@@ -141,13 +141,13 @@
 
                     <v-list-item
                         class="px-2"
-                        key="주문관리"
-                        to="/주문관리"
+                        key="orders"
+                        to="/orders"
                         @click="changeUrl()"
                         color="deep-purple lighten-2"
                         style="font-weight:700;"
                     >
-                        주문관리
+                        Order
                     </v-list-item>
 
 
@@ -163,13 +163,13 @@
                     </v-list-item>
                     <v-list-item
                         class="px-2"
-                        key="주문상세보기"
-                        to="주문상세보기"
+                        key="viewOrders"
+                        to="viewOrders"
                         @click="changeUrl()"
                         color="deep-purple lighten-2"
                         style="font-weight:700;"
                     >
-                        주문상세보기
+                        ViewOrder
                     </v-list-item>
 
 
@@ -428,16 +428,16 @@
                                             class="mx-auto"
                                             outlined
                                             rounded
-                                            key="결제이력"
-                                            to="/결제이력"
+                                            key="payments"
+                                            to="/payments"
                                             @click="changeUrl()"
                                             color="deep-purple lighten-2"
                                             style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
                                         >
-                                            결제이력
+                                            Payment
                                         </v-btn>
                                     </template>
-                                    <span>결제이력</span>
+                                    <span>Payment</span>
                                 </v-tooltip>
                             </v-card-actions>
                         </v-card>
@@ -499,16 +499,16 @@
                                             class="mx-auto"
                                             outlined
                                             rounded
-                                            key="주문관리"
-                                            to="/주문관리"
+                                            key="orders"
+                                            to="/orders"
                                             @click="changeUrl()"
                                             color="deep-purple lighten-2"
                                             style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
                                         >
-                                            주문관리
+                                            Order
                                         </v-btn>
                                     </template>
-                                    <span>주문관리</span>
+                                    <span>Order</span>
                                 </v-tooltip>
                             </v-card-actions>
                         </v-card>
@@ -561,13 +561,13 @@
                                     class="mx-auto"
                                     outlined
                                     rounded
-                                    key="주문상세보기"
-                                    to="/주문상세보기"
+                                    key="viewOrders"
+                                    to="/viewOrders"
                                     @click="changeUrl()"
                                     color="deep-purple lighten-2"
                                     style="font-weight:500; font-size:20px; padding:15px;"
                                 >
-                                    주문상세보기
+                                    ViewOrder
                                 </v-btn>
                             </v-card-actions>
                         </v-card>

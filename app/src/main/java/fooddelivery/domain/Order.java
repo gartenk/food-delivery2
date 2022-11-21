@@ -1,8 +1,6 @@
 package fooddelivery.domain;
 
-import fooddelivery.domain.주문됨;
 import fooddelivery.domain.Ordered;
-import fooddelivery.domain.주문취소됨;
 import fooddelivery.domain.OrderCanceled;
 import fooddelivery.AppApplication;
 import javax.persistence.*;

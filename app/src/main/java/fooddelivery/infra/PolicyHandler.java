@@ -18,7 +18,6 @@ import fooddelivery.domain.*;
 @Service
 @Transactional
 public class PolicyHandler{
-    @Autowired 주문Repository 주문Repository;
     @Autowired OrderRepository orderRepository;
     
     @StreamListener(KafkaProcessor.INPUT)
